@@ -1,0 +1,19 @@
+image: gitpod/workspace-ubuntu-20.04
+
+tasks:
+  - name: Install Dependencies
+    init: |
+      sudo apt-get update
+      sudo apt-get install -y \
+        automake cmake clang-format clang-tidy \
+        libc++-dev libc++abi-dev zlib1g-dev \
+        ninja-build python3-pip python3-setuptools \
+        software-properties-common apt-transport-https gnupg
+      curl -fsSL https://bazel.build/bazel-release.pub.gpg | gpg --dearmor > bazel-archive-keyring.gpg
+      sudo mv bazel-archive-keyring.gpg /usr/share/keyrings/
+      echo "deb [arch=amd64 signed-by=/usr/share/keyrings/bazel-archive-keyring.gpg] https://storage.googleapis.com/bazel-apt stable jdk1.8" | sudo tee /etc/apt/sources.list.d/bazel.list
+      sudo apt-get update && sudo apt-get install -y bazelisk
+      git clone https://github.com/envoyproxy/envoy.git /workspace/envoy
+    command: |
+      cd /workspace/envoy
+      bazel build //source/exe:envoy-static
