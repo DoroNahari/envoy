@@ -72,6 +72,7 @@ RUNTIME_GUARD(envoy_reloadable_features_no_extension_lookup_by_name);
 RUNTIME_GUARD(envoy_reloadable_features_normalize_rds_provider_config);
 RUNTIME_GUARD(envoy_reloadable_features_oauth2_use_refresh_token);
 RUNTIME_GUARD(envoy_reloadable_features_original_dst_rely_on_idle_timeout);
+RUNTIME_GUARD(envoy_reloadable_features_original_src_fix_port_exhaustion);
 RUNTIME_GUARD(envoy_reloadable_features_prefer_ipv6_dns_on_macos);
 RUNTIME_GUARD(envoy_reloadable_features_prefer_quic_client_udp_gro);
 RUNTIME_GUARD(envoy_reloadable_features_proxy_104);
@@ -153,6 +154,8 @@ FALSE_RUNTIME_GUARD(envoy_reloadable_features_quic_no_tcp_delay);
 FALSE_RUNTIME_GUARD(envoy_reloadable_features_http_inspector_use_balsa_parser);
 // TODO(renjietang): Evaluate and make this a config knob or remove.
 FALSE_RUNTIME_GUARD(envoy_reloadable_features_use_canonical_suffix_for_quic_brokenness);
+// TODO(fredyw): Remove after done with debugging.
+FALSE_RUNTIME_GUARD(envoy_reloadable_features_log_ip_families_on_network_error);
 
 // A flag to set the maximum TLS version for google_grpc client to TLS1.2, when needed for
 // compliance restrictions.
